@@ -41,5 +41,7 @@ jobs:
         run: |
           kubectl get nodes
 
+      - name: Deploy hello-world app
+        run: make deploy-hello ENV=${{ env.ENV }}
 
 

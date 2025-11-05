@@ -1,7 +1,11 @@
 SHELL := /bin/bash
 ENV ?= dev
 
+
 EKS_DIR = infra/aws
+CHART_DIR := ./helm/hello-world
+RELEASE_NAME := hello-world
+NAMESPACE := hello-world-$(ENV)
 
 pre-commit:
 	pre-commit run --all-files
@@ -18,3 +22,6 @@ apply: plan
 
 destroy:
 	cd $(EKS_DIR) && terraform destroy -var-file=envs/$(ENV).tfvars --auto-approve
+
+deploy-hello:
+	helm upgrade --install $(RELEASE_NAME) $(CHART_DIR) --namespace $(NAMESPACE) --create-namespace 
