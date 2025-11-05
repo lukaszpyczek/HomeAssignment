@@ -17,6 +17,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.12.2
+
+      - name: Install tflint
+        run: |
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+
       - name: Run pre-commit checks
         uses: pre-commit/action@v3.0.1
         with:

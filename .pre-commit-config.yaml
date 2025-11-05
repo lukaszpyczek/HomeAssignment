@@ -12,3 +12,4 @@ repos:
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
+      - id: terraform_tflint

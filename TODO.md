@@ -1,2 +1,2 @@
 --- TODO ---
-[] Add tflint ( don't want to do this now )
+[x] Add tflint ( don't want to do this now )
