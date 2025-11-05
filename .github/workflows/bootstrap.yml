@@ -44,12 +44,12 @@ jobs:
           terraform_version: "1.12.2"
 
       - name: Terraform init
-        working-directory: ${{ env.TF_WORKING_DIRECTORY }}
+        working-directory: ${{ env.TF_WORKING_DIR }}
         run: terraform init
 
       - name: Terraform plan
-        working-directory: ${{ env.TF_WORKING_DIRECTORY }}
-        run: terraform plan --output=tfplan
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform plan -out=tfplan
 
 
       - name: Upload plan artifact
