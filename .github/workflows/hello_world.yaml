@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     push:
       branches: ["main"]
-        
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -57,5 +57,3 @@ jobs:
 
       - name: Deploy hello-world app
         run: make deploy-hello ENV=${{ env.ENV }}
-
-
