@@ -57,8 +57,3 @@ jobs:
         with:
           name: tfplan
           path: infra/bootstrap/tfplan
-
-      - name: Terraform apply
-        if: ${{ github.event_name == "workflow_dispatch" }}
-        working-directory: ${{ env.TF_WORKING_DIRECTORY }}
-        run: terraform apply -auto-approve tfplan
