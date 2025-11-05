@@ -8,6 +8,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      AWS_REGION: eu-central-1
+      ENV: dev
+
 
     steps:
 
