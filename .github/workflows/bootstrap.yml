@@ -61,12 +61,6 @@ jobs:
           name: tfplan
           path: infra/bootstrap/tfplan
 
-      - name: Wait for manual approval
-        run: |
-          echo "Waiting for manual approval ..."
-          read -p "Type YES to continue: " input
-          if [ "$input" != YES ]; then exit 1; fi
-
       - name: Terraform apply
         working-directory: ${{env.TF_WORKING_DIR }}
         run: terraform apply -auto-approve tfplan
