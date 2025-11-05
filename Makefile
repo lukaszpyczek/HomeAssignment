@@ -14,7 +14,7 @@ plan: init
 
 
 apply: plan
-	cd $(EKS_DIR) && terraform apply -var-file=envs/$(ENV).tfvar -auto-approve tfplan
+	cd $(EKS_DIR) && terraform apply -var-file=envs/$(ENV).tfvars -auto-approve tfplan
 
 destroy:
-	cd $(EKS_DIR) && terraform destroy -var-file=envs/$(ENV).tfvar --auto-approve
+	cd $(EKS_DIR) && terraform destroy -var-file=envs/$(ENV).tfvars --auto-approve

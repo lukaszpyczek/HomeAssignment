@@ -18,3 +18,7 @@ variable "kubernetes_version" {
 variable "subnet_ids" {
   type = list(string)
 }
+
+variable "environment" {
+  type = string
+}

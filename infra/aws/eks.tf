@@ -5,6 +5,7 @@ module "eks" {
   name               = var.cluster_name
   kubernetes_version = var.kubernetes_version
 
+  endpoint_public_access                   = true
   enable_cluster_creator_admin_permissions = true
 
   compute_config = {
@@ -16,6 +17,7 @@ module "eks" {
   subnet_ids = var.subnet_ids
 
   tags = {
-    Environment = "dev"
+    Environment = var.environment
+    ManagedBy   = "Terraform"
   }
 }
