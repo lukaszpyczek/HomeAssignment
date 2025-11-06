@@ -24,4 +24,4 @@ destroy:
 	cd $(EKS_DIR) && terraform destroy -var-file=envs/$(ENV).tfvars --auto-approve
 
 deploy-hello:
-	helm upgrade --install $(RELEASE_NAME) $(CHART_DIR) --namespace $(NAMESPACE) --create-namespace
+	helm upgrade --install $(RELEASE_NAME) $(CHART_DIR) --namespace $(NAMESPACE) --create-namespace -f ./helm/hello-world/values-dev.yaml
