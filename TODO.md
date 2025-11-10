@@ -5,4 +5,4 @@
 [] Make sure s3 bucket for bootstrap are globally uniqu.
 [x] Delete dynamodb, no needed in this and newer version of tf
 [] Add pre-commit to check specific thing || not always terraform needed
-[] fix deploy of controller from terraform || now in makefile
+[x] fix deploy of controller from terraform || now in makefile

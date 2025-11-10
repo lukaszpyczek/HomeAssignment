@@ -3,11 +3,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress
-  namepsace: {{ .Release.Namespace }}
+  namespace: {{ .Release.Namespace }}
   annotations:
-    kubernetes.io/ingress.class: alb
+    #  kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
+  ingressClassName: alb
   rules:
 {{- range .Values.ingress.hosts }}
     - host: {{ .host }}
