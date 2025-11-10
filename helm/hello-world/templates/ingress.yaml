@@ -5,10 +5,15 @@ metadata:
   name: hello-world-ingress
   namespace: {{ .Release.Namespace }}
   annotations:
-    #  kubernetes.io/ingress.class: alb
+    {{- if eq .Values.ingress.controller "azure" }}
+    appgw.ingress.kubernetes.io/backend-protocol: "HTTP"
+    appgw.ingress.kubernetes.io/ssl-redirect: "false"
+    {{- else if eq .Values.ingress.controller "aws" }}
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    {{- end }}
 spec:
-  ingressClassName: alb
+    ingressClassName: {{- if eq .Values.ingress.controller "azure" }}azure-application-gateway{{- else if eq .Values.ingress.controller "aws" }}alb{{- end }}
   rules:
 {{- range .Values.ingress.hosts }}
     - host: {{ .host }}

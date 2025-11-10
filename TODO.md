@@ -6,3 +6,4 @@
 [x] Delete dynamodb, no needed in this and newer version of tf
 [] Add pre-commit to check specific thing || not always terraform needed
 [x] fix deploy of controller from terraform || now in makefile
+[] Fix role assignemtn || can assign only Owner 4 condtiion

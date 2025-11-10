@@ -19,6 +19,7 @@ resources:
 
 ingress:
   enabled: true
+  controller: azure
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
