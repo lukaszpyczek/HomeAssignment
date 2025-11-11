@@ -19,11 +19,10 @@ resources:
 
 ingress:
   enabled: true
-  controller: azure
+  ingressClassName: azure-application-gateway
   annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
+    appgw.ingress.kubernetes.io/backend-protocol: "HTTP"
+    appgw.ingress.kubernetes.io/ssl-redirect: "false"
   hosts:
     - host: ""
       paths:

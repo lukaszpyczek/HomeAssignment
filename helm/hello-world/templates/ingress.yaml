@@ -5,21 +5,20 @@ metadata:
   name: hello-world-ingress
   namespace: {{ .Release.Namespace }}
   annotations:
-    {{- if eq .Values.ingress.controller "azure" }}
-    appgw.ingress.kubernetes.io/backend-protocol: "HTTP"
-    appgw.ingress.kubernetes.io/ssl-redirect: "false"
-    {{- else if eq .Values.ingress.controller "aws" }}
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
+    {{- if .Values.ingress.annotations }}
+    {{- range $key, $value := .Values.ingress.annotations }}
+    {{ $key }}: "{{ $value }}"
     {{- end }}
+    {{- end }}
+
 spec:
-    ingressClassName: {{- if eq .Values.ingress.controller "azure" }}azure-application-gateway{{- else if eq .Values.ingress.controller "aws" }}alb{{- end }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
   rules:
-{{- range .Values.ingress.hosts }}
+    {{- range .Values.ingress.hosts }}
     - host: {{ .host }}
       http:
         paths:
-{{- range .paths }}
+          {{- range .paths }}
           - path: {{ .path }}
             pathType: {{ .pathType }}
             backend:
@@ -27,8 +26,6 @@ spec:
                 name: "hello-world"
                 port:
                   number: 80
-{{- end }}
-{{- end }}
-  tls:
-    {{ toYaml .Values.ingress.tls | indent 4 }}
+          {{- end }}
+    {{- end }}
 {{- end }}

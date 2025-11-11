@@ -6,4 +6,3 @@ locals {
   listener_name                  = "${azurerm_virtual_network.this.name}-httplstn"
   request_routing_rule_name      = "${azurerm_virtual_network.this.name}-rqrt"
 }
-

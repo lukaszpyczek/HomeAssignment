@@ -12,7 +12,7 @@ data "azurerm_subnet" "appgwsubnet" {
 
 data "azurerm_user_assigned_identity" "ingress" {
   name                = "ingressapplicationgateway-${azurerm_kubernetes_cluster.this.name}"
-  resource_group_name  = azurerm_kubernetes_cluster.this.node_resource_group
+  resource_group_name = azurerm_kubernetes_cluster.this.node_resource_group
 }
 
 resource "azurerm_virtual_network" "this" {
@@ -37,4 +37,3 @@ resource "azurerm_user_assigned_identity" "aks" {
   location            = var.location
   resource_group_name = var.resource_group_name
 }
-

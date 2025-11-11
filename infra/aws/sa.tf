@@ -4,12 +4,12 @@ resource "kubernetes_service_account" "this" {
     namespace = "kube-system"
     annotations = {
       "eks.amazonaws.com/role-arn" = aws_iam_role.this.arn
-	"meta.helm.sh/release-name": "aws-load-balancer-controller"
-"meta.helm.sh/release-namespace": "kube-system"
+      "meta.helm.sh/release-name" : "aws-load-balancer-controller"
+      "meta.helm.sh/release-namespace" : "kube-system"
     }
     labels = {
       "app.kubernetes.io/managed-by" = "Helm"
     }
   }
-depends_on = [module.eks]
+  depends_on = [module.eks]
 }
